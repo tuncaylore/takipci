@@ -2,442 +2,200 @@
 <html lang="tr">
 <head>
   <meta charset="UTF-8">
-  <title>Instagram Analizi - Tuncay.Lore Tarafından Kodlandı</title>
-  <style>
-      * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      background: linear-gradient(135deg, #f9d423, #ff4e50);
-      font-family: Arial, sans-serif;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #333;
-    }
-
-    .container {
-      background: #fff;
-      width: 100%;
-      max-width: 700px;
-      margin: 20px;
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-    }
-
-    h1 {
-      text-align: center;
-      font-size: 28px;
-      margin-bottom: 20px;
-      color: #5851DB; /* Instagram'ın meşhur rengi */
-    }
-
-    .file-inputs {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-      margin-bottom: 20px;
-    }
-
-    .file-inputs label {
-      font-weight: 600;
-      margin-bottom: 8px;
-      display: inline-block;
-    }
-
-    .file-inputs input[type="file"] {
-      background: #f8f8f8;
-      border: 1px solid #ddd;
-      padding: 8px;
-      border-radius: 6px;
-      cursor: pointer;
-    }
-
-    #analyzeBtn {
-      display: inline-block;
-      margin: 0 auto;
-      background: linear-gradient(to right, #833ab4, #fd1d1d, #fcb045);
-      color: #fff;
-      border: none;
-      border-radius: 6px;
-      padding: 12px 20px;
-      font-size: 16px;
-      cursor: pointer;
-      transition: box-shadow 0.2s ease, transform 0.2s ease;
-      text-align: center;
-      width: 100%;
-      max-width: 200px;
-    }
-
-    #analyzeBtn:hover {
-      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-      transform: translateY(-2px);
-    }
-
-    #results {
-      margin-top: 30px;
-    }
-
-    .section-title {
-      font-size: 20px;
-      font-weight: 700;
-      margin-bottom: 15px;
-      color: #833ab4;
-    }
-
-    .info-text {
-      font-size: 15px;
-      margin-bottom: 8px;
-      font-weight: 500;
-    }
-
-    .summary {
-      background: #fafafa;
-      padding: 15px;
-      border-radius: 8px;
-      margin-bottom: 20px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    }
-
-    .summary-title {
-      font-size: 18px;
-      font-weight: 700;
-      margin-bottom: 8px;
-      color: #833ab4;
-    }
-
-    ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    li {
-      background: #fafafa;
-      border-radius: 8px;
-      margin-bottom: 10px;
-      padding: 10px 14px;
-      transition: background 0.2s ease, box-shadow 0.2s ease;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    li:hover {
-      background: #fff;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    }
-
-    .insta-link {
-      display: flex;
-      align-items: center;
-      color: #333;
-      text-decoration: none;
-      transition: color 0.2s ease;
-    }
-
-    .insta-link img {
-      width: 24px;
-      height: 24px;
-      vertical-align: middle;
-    }
-
-    .insta-link span {
-      margin-left: 8px;
-      font-weight: 600;
-      font-size: 15px;
-    }
-
-    .insta-link:hover span {
-      color: #c13584;
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Instagram Analizi - Açıklamalı Versiyon</title>
+  <!-- Tailwind CSS'i CDN üzerinden yüklüyoruz -->
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-  <div class="container">
-    <h1>Instagram Analizi - Tuncay.Lore Tarafından Kodlanmıştır</h1>
-    <h3>Kullanıma açıtkır, istediğiniz gibi geliştirebilirsiniz</h3>
-
-    <div class="file-inputs">
-      <div>
-        <label for="folderInput">
-           İndirdiğiniz Klasörü seçin
-        </label>
-        <!-- 
-          webkitdirectory = klasör seçimi
-          multiple = tüm dosyalar gelebilir
-          accept=".json" = JSON dosyaları gösterilir
-        -->
-        <input
-          type="file"
-          id="folderInput"
-          webkitdirectory
-          directory
-          multiple
-          accept=".json"
-        />
+<!-- Gradient arka plan ve minimum yükseklik ayarı -->
+<body class="min-h-screen bg-gradient-to-br from-yellow-300 to-red-400">
+  <!-- Ana konteyner - sayfa merkezleme -->
+  <div class="container mx-auto px-4 py-8 min-h-screen flex items-center justify-center">
+    <!-- Ana içerik kartı -->
+    <div class="w-full max-w-2xl bg-white rounded-xl shadow-2xl p-6 md:p-8">
+      <!-- Başlık Bölümü -->
+      <div class="text-center mb-8">
+        <h1 class="text-2xl md:text-3xl font-bold text-purple-600 mb-2">Instagram Analizi</h1>
+        <p class="text-gray-600 text-sm">Kullanıma açıktır, istediğiniz gibi geliştirebilirsiniz</p>
       </div>
-    </div>
 
-    <div style="text-align:center;">
-      <button id="analyzeBtn">Analiz Et</button>
-    </div>
+      <!-- Dosya Seçme Bölümü -->
+      <div class="space-y-6 mb-8">
+        <div class="space-y-2">
+          <label for="folderInput" class="block text-sm font-medium text-gray-700">
+            İndirdiğiniz Klasörü seçin
+          </label>
+          <!-- Klasör seçme input'u - webkitdirectory özelliği klasör seçimini sağlar -->
+          <input
+            type="file"
+            id="folderInput"
+            webkitdirectory
+            directory
+            multiple
+            accept=".json"
+            class="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+          />
+        </div>
+      </div>
 
-    <div id="results"></div>
+      <!-- Analiz Butonu -->
+      <div class="text-center mb-8">
+        <button 
+          id="analyzeBtn"
+          class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-gradient-to-r from-purple-600 via-pink-500 to-red-500 hover:from-purple-700 hover:via-pink-600 hover:to-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 transform transition hover:-translate-y-0.5"
+        >
+          Analiz Et
+        </button>
+      </div>
+
+      <!-- Sonuçların görüntüleneceği alan -->
+      <div id="results" class="space-y-8"></div>
+    </div>
   </div>
 
   <script>
+    // Analiz butonuna tıklandığında çalışacak fonksiyon
     document.getElementById("analyzeBtn").addEventListener("click", async () => {
-      const folderFiles = document.getElementById("folderInput").files; // Tüm JSON dosyalar
+      const folderFiles = document.getElementById("folderInput").files;
       const resultsDiv = document.getElementById("results");
       resultsDiv.innerHTML = "";
 
-      // Eğer klasör seçilmediyse
-      if (!folderFiles || folderFiles.length === 0) {
-        resultsDiv.textContent = "Klasör seçilmedi veya klasör boş.";
+      // Dosya seçilmemişse hata mesajı göster
+      if (!folderFiles?.length) {
+        resultsDiv.innerHTML = `
+          <div class="p-4 bg-red-50 border border-red-200 rounded-md">
+            <p class="text-red-600">Klasör seçilmedi veya klasör boş.</p>
+          </div>
+        `;
         return;
       }
 
-      /************************************************
-       1) Followers (Ardışık) => followers_1.json, ...
-      ************************************************/
-      let allFollowersUsernames = new Set();
+      // Yardımcı Fonksiyonlar
+      // JSON dosyasını okuma ve parse etme fonksiyonu
+      const readJsonFile = async (file) => {
+        try {
+          const content = await file.text();
+          return JSON.parse(content);
+        } catch (err) {
+          console.error(`Error reading ${file.name}:`, err);
+          return null;
+        }
+      };
+
+      // Kullanıcı profil linki oluşturma fonksiyonu
+      const createUserLink = (username) => `
+        <a 
+          href="https://www.instagram.com/${username}" 
+          target="_blank"
+          class="flex items-center gap-3 p-3 bg-gray-50 rounded-lg hover:bg-white hover:shadow-md transition-all"
+        >
+          <img 
+            src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" 
+            alt="Instagram" 
+            class="w-5 h-5"
+          />
+          <span class="font-medium text-gray-700 hover:text-purple-600">${username}</span>
+        </a>
+      `;
+
+      // Takipçi Dosyalarını İşleme
+      const allFiles = Array.from(folderFiles);
+      const allFollowersUsernames = new Set(); // Tekrarsız takipçi listesi
       let largestConsecutive = 0;
 
-      const patternFollowers = /^followers_(\d+)\.json$/;
-      const allFileArray = Array.from(folderFiles);
-
-      // 1.1) followers_#.json dosyalarını yakala
-      const matchedFollowers = allFileArray
-        .map((file) => {
-          const match = file.name.match(patternFollowers);
-          if (match) {
-            const num = parseInt(match[1], 10);
-            return { file, number: num };
-          }
-          return null;
+      // followers_1.json, followers_2.json gibi dosyaları bulma ve sıralama
+      const followersFiles = allFiles
+        .map(file => {
+          const match = file.name.match(/^followers_(\d+)\.json$/);
+          return match ? { file, number: parseInt(match[1], 10) } : null;
         })
-        .filter(item => item !== null);
+        .filter(Boolean)
+        .sort((a, b) => a.number - b.number);
 
-      // 1.2) Sırala
-      matchedFollowers.sort((a, b) => a.number - b.number);
-
-      // 1.3) Ardışık bul
-      for (const item of matchedFollowers) {
+      // Ardışık takipçi dosyalarını işleme
+      for (const item of followersFiles) {
         if (item.number === largestConsecutive + 1) {
           largestConsecutive++;
-        } else {
-          break;
-        }
-      }
-
-      // 1.4) Ardışık olanlar
-      const finalFollowers = matchedFollowers.filter(item => item.number <= largestConsecutive);
-
-      // 1.5) Dosyaları oku
-      for (const item of finalFollowers) {
-        try {
-          const content = await item.file.text();
-          const jsonData = JSON.parse(content);
-          // [ { "string_list_data": [ { "value": "..." } ] }, ... ]
-          if (Array.isArray(jsonData)) {
-            jsonData.forEach(entry => {
-              if (entry.string_list_data && Array.isArray(entry.string_list_data)) {
-                entry.string_list_data.forEach(obj => {
-                  if (obj.value) {
-                    allFollowersUsernames.add(obj.value);
-                  }
-                });
-              }
-            });
-          }
-        } catch (err) {
-          console.error("followers_*.json okunurken hata:", item.file.name, err);
-        }
-      }
-
-      /************************************************
-       2) following.json (tek dosya)
-      ************************************************/
-      let followingFile = allFileArray.find(f => f.name === "following.json");
-      let followingList = [];
-      if (followingFile) {
-        try {
-          const fContent = await followingFile.text();
-          const fData = JSON.parse(fContent);
-          // {
-          //   "relationships_following": [
-          //     { "string_list_data": [ { "value": "..." } ] }
-          //   ]
-          // }
-          if (
-            fData.relationships_following &&
-            Array.isArray(fData.relationships_following)
-          ) {
-            fData.relationships_following.forEach(item => {
-              if (Array.isArray(item.string_list_data)) {
-                item.string_list_data.forEach(obj => {
-                  if (obj.value) {
-                    followingList.push(obj.value);
-                  }
-                });
-              }
-            });
-          }
-        } catch (err) {
-          console.error("following.json okunurken hata oluştu:", err);
-        }
-      }
-
-      /************************************************
-       3) pending_follow_requests.json (tek dosya)
-      ************************************************/
-      let pendingFile = allFileArray.find(f => f.name === "pending_follow_requests.json");
-      let pendingRequestsList = [];
-      if (pendingFile) {
-        try {
-          const pContent = await pendingFile.text();
-          const pData = JSON.parse(pContent);
-          // {
-          //   "relationships_follow_requests_sent": [
-          //     { "string_list_data": [ { "value": "..." } ] }
-          //   ]
-          // }
-          if (
-            pData.relationships_follow_requests_sent &&
-            Array.isArray(pData.relationships_follow_requests_sent)
-          ) {
-            pData.relationships_follow_requests_sent.forEach(item => {
-              if (Array.isArray(item.string_list_data)) {
-                item.string_list_data.forEach(obj => {
-                  if (obj.value) {
-                    pendingRequestsList.push(obj.value);
-                  }
-                });
-              }
-            });
-          }
-        } catch (err) {
-          console.error("pending_follow_requests.json okunurken hata oluştu:", err);
-        }
-      }
-
-      /************************************************
-       4) Takip Ettiğin Ama Seni Takip Etmeyenler
-      ************************************************/
-      let notFollowingMe = [];
-      if (largestConsecutive > 0 && followingFile) {
-        // followingList'te olup, allFollowersUsernames içinde olmayanlar
-        notFollowingMe = followingList.filter(u => !allFollowersUsernames.has(u));
-      }
-
-      /************************************************
-       5) Özet Bilgiler
-      ************************************************/
-      const summaryDiv = document.createElement("div");
-      summaryDiv.className = "summary";
-
-      const totalFollowers = allFollowersUsernames.size;  // Kaç takipçi var
-      const totalFollowing = followingList.length;        // Kaç kişiyi takip ediyorsun
-      const totalNotFollowing = notFollowingMe.length;    // Seni takip etmeyenler
-      const totalPending = pendingRequestsList.length;    // Gönderilmiş istekler
-
-      summaryDiv.innerHTML = `
-        <div class="summary-title">Özet Bilgiler</div>
-        <p>
-          <strong>Followers (Ardışık):</strong>
-          ${
-            largestConsecutive > 0
-              ? largestConsecutive + " adet followers_#.json dahil edildi."
-              : "Ardışık followers_#.json bulunmadı veya klasör seçilmedi."
-          }
-          <br>
-          <strong>Following:</strong>
-          ${
-            followingFile
-              ? "following.json bulundu."
-              : "following.json bulunamadı."
-          }
-          <br>
-          <strong>Pending Follow Requests:</strong>
-          ${
-            pendingFile
-              ? "pending_follow_requests.json bulundu."
-              : "Bulunamadı."
-          }
-        </p>
-        <ul>
-          <li>Toplam Takipçi Sayısı: ${totalFollowers}</li>
-          <li>Takip Ettiğin Kişi Sayısı: ${totalFollowing}</li>
-          <li>Seni Takip Etmeyen Kişi Sayısı: ${
-            (largestConsecutive > 0 && followingFile) 
-              ? totalNotFollowing
-              : "Analiz için eksik dosya"
-          }</li>
-          <li>Gönderilmiş Takip İsteği Sayısı: ${totalPending}</li>
-        </ul>
-      `;
-      resultsDiv.appendChild(summaryDiv);
-
-      /************************************************
-       6) Takip Ettiğin Ama Seni Takip Etmeyenler Bölümü
-      ************************************************/
-      const section1 = document.createElement("div");
-      section1.innerHTML = `<div class="section-title">Takip Ettiğin Ama Seni Takip Etmeyenler</div>`;
-
-      if (!followingFile || largestConsecutive === 0) {
-        section1.innerHTML += `<p class="info-text">Bu liste için en az bir ardışık <code>followers_#.json</code> ve <code>following.json</code> dosyası gereklidir.</p>`;
-      } else {
-        if (notFollowingMe.length === 0) {
-          section1.innerHTML += `<p>Takip ettiğin herkes seni de takip ediyor veya dosyada kullanıcı yok.</p>`;
-        } else {
-          const ul = document.createElement("ul");
-          notFollowingMe.forEach(username => {
-            const li = document.createElement("li");
-            li.innerHTML = `
-              <a class="insta-link" href="https://www.instagram.com/${username}" target="_blank">
-                <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram" />
-                <span>${username}</span>
-              </a>
-            `;
-            ul.appendChild(li);
+          const data = await readJsonFile(item.file);
+          data?.forEach(entry => {
+            entry.string_list_data?.[0]?.value && allFollowersUsernames.add(entry.string_list_data[0].value);
           });
-          section1.appendChild(ul);
         }
       }
-      resultsDiv.appendChild(section1);
 
-      /************************************************
-       7) Gönderilmiş Takip İstekleri (pending_follow_requests.json)
-      ************************************************/
-      const section2 = document.createElement("div");
-      section2.style.marginTop = "40px";
-      section2.innerHTML = `<div class="section-title">Gönderilmiş Takip İstekleri</div>`;
-
-      if (!pendingFile) {
-        section2.innerHTML += `<p class="info-text">Klasörde <code>pending_follow_requests.json</code> bulunamadı.</p>`;
-      } else if (pendingRequestsList.length === 0) {
-        section2.innerHTML += `<p>Gönderilmiş takip isteği bulunmuyor veya dosya içi boş.</p>`;
-      } else {
-        const ul = document.createElement("ul");
-        pendingRequestsList.forEach(username => {
-          const li = document.createElement("li");
-          li.innerHTML = `
-            <a class="insta-link" href="https://www.instagram.com/${username}" target="_blank">
-              <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram" />
-              <span>${username}</span>
-            </a>
-          `;
-          ul.appendChild(li);
+      // Takip Edilenleri İşleme
+      const followingFile = allFiles.find(f => f.name === "following.json");
+      const followingList = [];
+      if (followingFile) {
+        const data = await readJsonFile(followingFile);
+        data?.relationships_following?.forEach(item => {
+          item.string_list_data?.[0]?.value && followingList.push(item.string_list_data[0].value);
         });
-        section2.appendChild(ul);
       }
-      resultsDiv.appendChild(section2);
+
+      // Bekleyen Takip İsteklerini İşleme
+      const pendingFile = allFiles.find(f => f.name === "pending_follow_requests.json");
+      const pendingList = [];
+      if (pendingFile) {
+        const data = await readJsonFile(pendingFile);
+        data?.relationships_follow_requests_sent?.forEach(item => {
+          item.string_list_data?.[0]?.value && pendingList.push(item.string_list_data[0].value);
+        });
+      }
+
+      // Seni Takip Etmeyenleri Hesaplama
+      const notFollowingMe = followingList.filter(u => !allFollowersUsernames.has(u));
+
+      // Sonuçları Görüntüleme
+      resultsDiv.innerHTML = `
+        <!-- Özet Kart Bölümü -->
+        <div class="bg-gray-50 rounded-xl p-6 shadow-sm space-y-4">
+          <h3 class="text-xl font-semibold text-purple-600">Özet Bilgiler</h3>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="p-4 bg-white rounded-lg shadow-sm">
+              <p class="text-sm text-gray-500">Toplam Takipçi</p>
+              <p class="text-2xl font-bold text-gray-900">${allFollowersUsernames.size}</p>
+            </div>
+            <div class="p-4 bg-white rounded-lg shadow-sm">
+              <p class="text-sm text-gray-500">Takip Edilen</p>
+              <p class="text-2xl font-bold text-gray-900">${followingList.length}</p>
+            </div>
+            <div class="p-4 bg-white rounded-lg shadow-sm">
+              <p class="text-sm text-gray-500">Takip Etmeyenler</p>
+              <p class="text-2xl font-bold text-gray-900">${notFollowingMe.length}</p>
+            </div>
+            <div class="p-4 bg-white rounded-lg shadow-sm">
+              <p class="text-sm text-gray-500">Bekleyen İstekler</p>
+              <p class="text-2xl font-bold text-gray-900">${pendingList.length}</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Takip Etmeyenler Bölümü -->
+        <div class="mt-8 space-y-4">
+          <h3 class="text-xl font-semibold text-purple-600">Takip Ettiğin Ama Seni Takip Etmeyenler</h3>
+          ${
+            notFollowingMe.length 
+              ? `<div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                  ${notFollowingMe.map(createUserLink).join('')}
+                </div>`
+              : `<p class="text-gray-600">Takip ettiğin herkes seni de takip ediyor.</p>`
+          }
+        </div>
+
+        <!-- Bekleyen İstekler Bölümü -->
+        <div class="mt-8 space-y-4">
+          <h3 class="text-xl font-semibold text-purple-600">Gönderilmiş Takip İstekleri</h3>
+          ${
+            pendingList.length
+              ? `<div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                  ${pendingList.map(createUserLink).join('')}
+                </div>`
+              : `<p class="text-gray-600">Bekleyen takip isteği bulunmuyor.</p>`
+          }
+        </div>
+      `;
     });
   </script>
 </body>
